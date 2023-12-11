@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 f = open("all_links.txt", "w")
 
-a = [2018,2019,2020,2021,2022,2023]
+a = [2018,2019,2020,2021,2022,2023]     #For upcoming years you can add [2024,2025,....]
 for i in a:
     url = f"https://klaviyo.tech/archive/{i}"
     print(url)
