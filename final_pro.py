@@ -2,9 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.service import Service
-from selenium.common.exceptions import NoSuchElementException
-import time, pdfkit, os
+import time, os
 from weasyprint import HTML
 
 chrome_option = Options()
@@ -20,7 +18,7 @@ os.add_dll_directory(r"C:\Program Files\GTK3-Runtime Win64\bin")
 
 for i in data_into_list:
     driver.get(i)
-    time.sleep(3)   # After opening the link the page should wait for 2 sec to get completely load
+    time.sleep(3)   # After opening the link the page should wait for 3 sec to get completely load
     
     ## For getting article title
     title = driver.find_element(By.TAG_NAME, 'h1')
@@ -43,13 +41,6 @@ for i in data_into_list:
     
     cont = driver.find_element(By.CLASS_NAME, 'pw-post-body-paragraph')
     contents = cont.find_elements(By.XPATH, "following-sibling::*")
-    
-    # try:
-    #     separator_div = driver.find_element(By.XPATH, '//div[@role="separator"]')
-    #     # Skip this div and move to the next one
-    #     contents.remove(separator_div)
-    # except NoSuchElementException:
-    #     pass
     
     contt = ''.join([i.get_attribute("outerHTML") for i in contents])
     
